@@ -4,36 +4,10 @@
 <link rel="stylesheet" href="index.css">
 </head>
   <body>
-<div id="muteYouTubeVideoPlayer"></div>
-
-<script async src="https://www.youtube.com/iframe_api"></script>
-<script>
- function onYouTubeIframeAPIReady() {
-  var player;
-  player = new YT.Player('muteYouTubeVideoPlayer', {
-    videoId: 'dQw4w9WgXcQ', // YouTube Video ID
-    width: 560,               // Player width (in px)
-    height: 316,              // Player height (in px)
-    playerVars: {
-      autoplay: 1,        // Auto-play the video on load
-      controls: 1,        // Show pause/play buttons in player
-      showinfo: 0,        // Hide the video title
-      modestbranding: 1,  // Hide the Youtube Logo
-      loop: 1,            // Run the video in a loop
-      fs: 0,              // Hide the full screen button
-      cc_load_policy: 0, // Hide closed captions
-      iv_load_policy: 3,  // Hide the Video Annotations
-      autohide: 0         // Hide video controls when playing
-    },
-    events: {
-      onReady: function(e) {
-        e.target.mute();
-      }
-    }
-  });
- }
-
-</script>
+<video width="500" controls>
+  <source src="barlijstvideo.mp4" type="video/mp4">
+  Your browser does not support HTML video.
+</video>
     If video doesn't work here is the link.
     <div class="mydiv"><p>GEEN RIKROLL <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Echt niet!!!!!</a></p></div>
   </body>

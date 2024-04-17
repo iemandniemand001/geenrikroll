@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>Geen Rikroll</title>
+  Geen Rikroll
 </head>
   <body>
     <div 

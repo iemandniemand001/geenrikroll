@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+   <body style="background-color:#EAFAF1">
+      Enter Password:
+      <input type='text' value='' id='input'><br><br>
+      <input type='checkbox' onclick='protectpasscode()'>Show results
+      <script>
+         function protectpasscode() {
+            var a = document.getElementById('input');
+            var b = document.getElementById('tutorial');
+            if (a.value === "input") {
+               window.location="welcome.html";
+            } else {
+               alert("Password incorrect");
+            }
+         }
+      </script>
+   </body>
+</html>

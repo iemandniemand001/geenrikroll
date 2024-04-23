@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+   <style>
+body {
+  background-image: url('bassie.jpg');
+}
+</style>
+   <body>
+      Enter Password:
+      <input type='text' value='' id='input'><br><br>
+      <input type='checkbox' onclick='protectpasscode()'>Show results
+      <script>
+         function protectpasscode() {
+            var a = document.getElementById('input');
+            var b = document.getElementById('tutorial');
+            if (a.value === "input") {
+               window.location="index2.html";
+            } else {
+               alert("Password incorrect");
+            }
+         }
+      </script>
+   </body>
+</html>

@@ -93,7 +93,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 </head>
 <body>
 
-<img id="myImg" src="33skdi.png" alt="1" style="width:100%;max-width:300px">
+<img id="myImg" src="33skdi.png" alt="33" style="width:100%;max-width:300px">
 
 <!-- The Modal -->
 <div id="myModal" class="modal">

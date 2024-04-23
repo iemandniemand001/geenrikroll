@@ -2,9 +2,9 @@
 <html>
         <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="index.css">
     <div id="content">
    <body>
-     
 <style>
    body {
      background-image: url('bassie.jpg');
@@ -36,8 +36,10 @@
                     document.getElementById("content").innerHTML = this.responseText;
                 }
             };
+                <div class="mydiv">
             xhttp.open("GET", "index2.html", true);
             xhttp.send();
+                </div>
         }
       </script>
 </html>

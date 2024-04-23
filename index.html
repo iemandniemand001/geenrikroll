@@ -1,44 +1,41 @@
 <!DOCTYPE html>
 <html>
         <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="index.css">
-    <div id="content">
-   <body>
-<style>
-   body {
-     background-image: url('bassie.jpg');
-   }
-</style>
-      Enter Password:
-      <input type='text' value='' id='input'><br><br>
-      <button onclick='protectpasscode()'>Show results</button>
-         
-   </body>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <div id="content">
+                <body>
+                        <style>
+                                body {
+                                     background-image: url('bassie.jpg');
+                                }
+                        </style>
+                         Enter Password:
+                        <input type='text' value='' id='input'><br><br>
+                        <button onclick='protectpasscode()'>Show results</button>
+                </body>
+        </div>
+        <script>
+                function protectpasscode() {
+                    var a = document.getElementById('input');
+                    var b = document.getElementById('tutorial');
+                    if (a.value === "input") {
+                        loadNewContent();
+                    } else {
+                        window.location="index2.html";
+                    }
+                 }
 
-         <script>
-         function protectpasscode() {
-            var a = document.getElementById('input');
-            var b = document.getElementById('tutorial');
-            if (a.value === "input") {
-               loadNewContent();
-            } else {
-               window.location="index2.html";
-            }
-         }
-
-        function loadNewContent() {
-            // Make an AJAX request to load the content of another file
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    // Replace the content of a div with the content from the other file
-                    document.getElementById("content").innerHTML = this.responseText;
+                function loadNewContent() {
+                        // Make an AJAX request to load the content of another file
+                        var xhttp = new XMLHttpRequest();
+                        xhttp.onreadystatechange = function() {
+                                if (this.readyState == 4 && this.status == 200) {
+                                        // Replace the content of a div with the content from the other file
+                                        document.getElementById("content").innerHTML = this.responseText;
+                                }
+                        };
+                        xhttp.open("GET", "index2.html", true);
+                        xhttp.send();
                 }
-            };
-            xhttp.open("GET", "index2.html", true);
-            xhttp.send();
-        }
-      </script>
-               </div>
+        </script>      
 </html>

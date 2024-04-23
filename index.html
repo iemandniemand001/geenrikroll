@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
+    <div id="content">
    <body>
-      <div id="content">
+     
 <style>
    body {
      background-image: url('bassie.jpg');
@@ -10,8 +11,10 @@
       Enter Password:
       <input type='text' value='' id='input'><br><br>
       <button onclick='protectpasscode()'>Show results</button>
-         </div>
-      <script>
+         
+   </body>
+   </div>
+         <script>
          function protectpasscode() {
             var a = document.getElementById('input');
             var b = document.getElementById('tutorial');
@@ -35,5 +38,4 @@
             xhttp.send();
         }
       </script>
-   </body>
 </html>

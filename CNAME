@@ -1,1 +1,11 @@
-www.jota-route.run.place
+def greet(name):
+    """
+    Returns a personalized greeting message.
+
+    :param name: The name of the person to greet.
+    :return: A greeting message.
+    """
+    return f"Hello, {name}! Have a great day!"
+
+# Example usage
+print(greet("Alice"))

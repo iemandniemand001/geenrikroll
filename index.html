@@ -19,13 +19,13 @@
                     var a = document.getElementById('input');
                     var b = document.getElementById('tutorial');
                     if (a.value === "input") {
-                        loadNewContent(true);
+                        loadNewContent(1);
                     } else {
-                        loadNewContent(false);
+                        loadNewContent(0);
                     }
                  }
 
-                function loadNewContent(bool i) {
+                function loadNewContent(var i) {
                         // Make an AJAX request to load the content of another file
                         var xhttp = new XMLHttpRequest();
                         xhttp.onreadystatechange = function() {
@@ -34,10 +34,10 @@
                                         document.getElementById("content").innerHTML = this.responseText;
                                 }
                         };
-                        if(i == false){
+                        if(i == 0){
                                 xhttp.open("GET", "index2.html", true);
                         }
-                        else if(i == true){
+                        else if(i == 1){
                                 xhttp.open("GET", "index3.html", true);
                         }
                         xhttp.send();

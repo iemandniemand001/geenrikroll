@@ -45,6 +45,9 @@
         button:hover {
             background-color: #0056b3;
         }
+        #content {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -56,7 +59,9 @@
         <br><br>
         <button onclick="login()">Login</button>
         <p id="error-message" style="color: red;"></p>
-    </div id="content">
+    </div>
+
+    <div id="content"></div> <!-- Placeholder to load new content -->
 
     <script>
         // Accounts opslaan als een object { username: "password" }
@@ -73,32 +78,32 @@
 
             // Check of de gebruikersnaam bestaat en het wachtwoord klopt
             if (accounts[username] && accounts[username] === password) {
-                // Redirect naar index3.html als de login succesvol is
-               loadNewContent(1);
+                // Load index3.html content dynamically
+                loadNewContent(1);
             } else {
-                // Toon een foutmelding als de login niet klopt
+                // Show error message and load index2.html content dynamically
                 errorMessage.textContent = 'Incorrect username or password, please try again.';
-				loadNewContent(0);
+                loadNewContent(0);
             }
         }
-		
-	function loadNewContent(i) {
-                        // Make an AJAX request to load the content of another file
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				// Replace the content of a div with the content from the other file
-				document.getElementById("content").innerHTML = this.responseText;
-			}
-		};
-		if(i == 0){
-			xhttp.open("GET", "index2.html", true);
-		}
-		else if(i == 1){
-			xhttp.open("GET", "index3.html", true);
-		}
-		xhttp.send();
+        
+        function loadNewContent(pageIndex) {
+            // Make an AJAX request to load the content of another file
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    // Replace the content of the div with id 'content' with the new page content
+                    document.getElementById("content").innerHTML = this.responseText;
                 }
+            };
+            if(pageIndex === 0){
+                xhttp.open("GET", "index2.html", true); // Load index2.html on login failure
+            }
+            else if(pageIndex === 1){
+                xhttp.open("GET", "index3.html", true); // Load index3.html on login success
+            }
+            xhttp.send();
+        }
     </script>
 
 </body>

@@ -46,13 +46,13 @@
             background-color: #0056b3;
         }
         #content {
-            margin-top: 20px;
+            display: none; /* Initially hidden */
         }
     </style>
 </head>
 <body>
 
-    <div class="login-container">
+    <div class="login-container" id="login-form">
         <h2>Login</h2>
         <input type="text" id="username" placeholder="Enter username">
         <input type="password" id="password" placeholder="Enter password">
@@ -76,32 +76,26 @@
             var password = document.getElementById('password').value;
             var errorMessage = document.getElementById('error-message');
 
-            // Check of de gebruikersnaam bestaat en het wachtwoord klopt
+            // Check if the username and password are correct
             if (accounts[username] && accounts[username] === password) {
-                // Load index3.html content dynamically
-                loadNewContent(1);
+                // Login success - load index3.html content dynamically
+                loadNewContent('index3.html');
             } else {
-                // Show error message and load index2.html content dynamically
+                // Show error message if login fails
+                loadNewContent('index2.html');
                 errorMessage.textContent = 'Incorrect username or password, please try again.';
-                loadNewContent(0);
             }
         }
-        
-        function loadNewContent(pageIndex) {
-            // Make an AJAX request to load the content of another file
+
+        function loadNewContent(page) {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    // Replace the content of the div with id 'content' with the new page content
-                    document.getElementById("content").innerHTML = this.responseText;
+                    // Replace the entire page content with the content from index3.html
+                    document.body.innerHTML = this.responseText;
                 }
             };
-            if(pageIndex === 0){
-                xhttp.open("GET", "index2.html", true); // Load index2.html on login failure
-            }
-            else if(pageIndex === 1){
-                xhttp.open("GET", "index3.html", true); // Load index3.html on login success
-            }
+            xhttp.open("GET", page, true);
             xhttp.send();
         }
     </script>

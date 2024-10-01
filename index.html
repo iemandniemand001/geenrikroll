@@ -82,22 +82,22 @@
             }
         }
 		
-		                function loadNewContent(i) {
+	function loadNewContent(i) {
                         // Make an AJAX request to load the content of another file
-                        var xhttp = new XMLHttpRequest();
-                        xhttp.onreadystatechange = function() {
-                                if (this.readyState == 4 && this.status == 200) {
-                                        // Replace the content of a div with the content from the other file
-                                        document.getElementById("content").innerHTML = this.responseText;
-                                }
-                        };
-                        if(i == 0){
-                                xhttp.open("GET", "index2.html", true);
-                        }
-                        else if(i == 1){
-                                xhttp.open("GET", "index3.html", true);
-                        }
-                        xhttp.send();
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				// Replace the content of a div with the content from the other file
+				document.getElementById("content").innerHTML = this.responseText;
+			}
+		};
+		if(i == 0){
+			xhttp.open("GET", "index2.html", true);
+		}
+		else if(i == 1){
+			xhttp.open("GET", "index3.html", true);
+		}
+		xhttp.send();
                 }
     </script>
 

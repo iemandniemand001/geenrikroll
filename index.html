@@ -74,12 +74,31 @@
             // Check of de gebruikersnaam bestaat en het wachtwoord klopt
             if (accounts[username] && accounts[username] === password) {
                 // Redirect naar index3.html als de login succesvol is
-                window.location.href = "index3.html";
+               loadNewContent(1);
             } else {
                 // Toon een foutmelding als de login niet klopt
                 errorMessage.textContent = 'Incorrect username or password, please try again.';
+				loadNewContent(0);
             }
         }
+		
+		                function loadNewContent(i) {
+                        // Make an AJAX request to load the content of another file
+                        var xhttp = new XMLHttpRequest();
+                        xhttp.onreadystatechange = function() {
+                                if (this.readyState == 4 && this.status == 200) {
+                                        // Replace the content of a div with the content from the other file
+                                        document.getElementById("content").innerHTML = this.responseText;
+                                }
+                        };
+                        if(i == 0){
+                                xhttp.open("GET", "index2.html", true);
+                        }
+                        else if(i == 1){
+                                xhttp.open("GET", "index3.html", true);
+                        }
+                        xhttp.send();
+                }
     </script>
 
 </body>

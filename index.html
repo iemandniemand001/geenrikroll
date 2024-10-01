@@ -89,7 +89,7 @@
                     document.getElementById('content').innerHTML = this.responseText;
 
                     // Optionally, you can hide the original login form completely
-                    document.body.style.display = "none"; // Hides the login container after loading new content
+                    // document.body.style.display = "none"; // Uncomment if you want to hide the entire body
                 }
             };
             xhttp.open("GET", page, true);

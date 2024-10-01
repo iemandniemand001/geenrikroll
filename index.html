@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Login</title>
     <style>
         body {
             margin: 0;
@@ -12,13 +12,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-image: url('bassie.jpg'); /* Background image */
+            background-image: url('bassie.jpg'); /* Achtergrondafbeelding */
             background-size: cover;
             background-position: center;
             font-family: Arial, sans-serif;
         }
         .login-container {
-            background-color: rgba(255, 255, 255, 0.8); /* White overlay */
+            background-color: rgba(255, 255, 255, 0.8); /* Witte overlay voor contrast */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
@@ -48,37 +48,54 @@
     </style>
 </head>
 <body>
-    <div class="login-container" id="login-form">
-        <h2>Enter Password:</h2>
-        <input type="text" value="" id="input" placeholder="Enter password"><br><br>
-        <button onclick="protectPasscode()">Show results</button>
+
+    <div id="content" class="login-container">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Enter username">
+        <input type="password" id="password" placeholder="Enter password">
+        <br><br>
+        <button onclick="login()">Login</button>
         <p id="error-message" style="color: red;"></p>
     </div>
 
     <script>
-        function protectPasscode() {
-            var input = document.getElementById('input').value;
+        // Accounts opslaan als een object { username: "password" }
+        const accounts = {
+            "user1": "password123",
+            "Rik": "BassieJC24.route", // voorbeeld van een account
+            "admin": "adminpass"
+        };
+
+        function login() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
             var errorMessage = document.getElementById('error-message');
 
-            if (input === "BassieJC24.route") {
-                // Load index3.html content dynamically and replace login form
+            // Check if the username and password are correct
+            if (accounts[username] && accounts[username] === password) {
+                // Login success - load index3.html content dynamically
                 loadNewContent('index3.html');
             } else {
-                errorMessage.textContent = 'Incorrect password, please try again.';
+                // Show error message if login fails
+                errorMessage.textContent = 'Incorrect username or password, please try again.';
             }
         }
 
         function loadNewContent(page) {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
-                if (this.readyState === 4 && this.status === 200) {
-                    // Replace the entire body content with index3.html content
-                    document.body.innerHTML = this.responseText;
+                if (this.readyState == 4 && this.status == 200) {
+                    // Replace the entire content of the login container
+                    document.getElementById('content').innerHTML = this.responseText;
+
+                    // Optionally, you can hide the original login form completely
+                    document.body.style.display = "none"; // Hides the login container after loading new content
                 }
             };
             xhttp.open("GET", page, true);
             xhttp.send();
         }
     </script>
+
 </body>
 </html>

@@ -1,46 +1,86 @@
 <!DOCTYPE html>
-<html>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <div id="content">
-                <body>
-                        <style>
-                                body {
-                                     background-image: url('bassie.jpg');
-                                }
-                        </style>
-                         Enter Password:
-                        <input type='text' value='' id='input'><br><br>
-                        <button onclick='protectpasscode()'>Show results</button>
-                </body>
-        </div>
-        <script>
-                function protectpasscode() {
-                    var a = document.getElementById('input');
-                    var b = document.getElementById('tutorial');
-                    if (a.value === "BassieJC24.route") {
-                        loadNewContent(1);
-                    } else {
-                        loadNewContent(0);
-                    }
-                 }
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('bassie.png'); /* Achtergrondafbeelding */
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+        }
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.8); /* Witte overlay voor contrast */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            width: 300px;
+        }
+        input[type='text'], input[type='password'] {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
 
-                function loadNewContent(i) {
-                        // Make an AJAX request to load the content of another file
-                        var xhttp = new XMLHttpRequest();
-                        xhttp.onreadystatechange = function() {
-                                if (this.readyState == 4 && this.status == 200) {
-                                        // Replace the content of a div with the content from the other file
-                                        document.getElementById("content").innerHTML = this.responseText;
-                                }
-                        };
-                        if(i == 0){
-                                xhttp.open("GET", "index2.html", true);
-                        }
-                        else if(i == 1){
-                                xhttp.open("GET", "index3.html", true);
-                        }
-                        xhttp.send();
-                }
-        </script>      
+    <div class="login-container">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Enter username">
+        <input type="password" id="password" placeholder="Enter password">
+        <br><br>
+        <button onclick="login()">Login</button>
+        <p id="error-message" style="color: red;"></p>
+    </div>
+
+    <script>
+        // Accounts opslaan als een object { username: "password" }
+        const accounts = {
+            "user1": "password123",
+            "BassieJC24": "route", // voorbeeld van een account
+            "admin": "adminpass"
+        };
+
+        function login() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var errorMessage = document.getElementById('error-message');
+
+            // Check of de gebruikersnaam bestaat en het wachtwoord klopt
+            if (accounts[username] && accounts[username] === password) {
+                // Redirect naar index3.html als de login succesvol is
+                window.location.href = "index3.html";
+            } else {
+                // Toon een foutmelding als de login niet klopt
+                errorMessage.textContent = 'Incorrect username or password, please try again.';
+            }
+        }
+    </script>
+
+</body>
 </html>

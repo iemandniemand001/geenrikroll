@@ -62,7 +62,7 @@
         // Accounts opslaan als een object { username: "password" }
         const accounts = {
             "user1": "password123",
-            "BassieJC24": "route", // voorbeeld van een account
+            "Rik": "BassieJC24.route", // voorbeeld van een account
             "admin": "adminpass"
         };
 
@@ -77,8 +77,9 @@
                loadNewContent(1);
             } else {
                 // Toon een foutmelding als de login niet klopt
+		loadNewContent(0);
                 errorMessage.textContent = 'Incorrect username or password, please try again.';
-				loadNewContent(0);
+		
             }
         }
 		

@@ -56,7 +56,7 @@
         <br><br>
         <button onclick="login()">Login</button>
         <p id="error-message" style="color: red;"></p>
-    </div>
+    </div id="content">
 
     <script>
         // Accounts opslaan als een object { username: "password" }
@@ -77,9 +77,8 @@
                loadNewContent(1);
             } else {
                 // Toon een foutmelding als de login niet klopt
-		loadNewContent(0);
                 errorMessage.textContent = 'Incorrect username or password, please try again.';
-		
+				loadNewContent(0);
             }
         }
 		

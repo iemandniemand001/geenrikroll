@@ -83,14 +83,13 @@
         }
 
         function loadNewContent(page) {
-            // Hide the entire login form
-            document.getElementById('content').style.display = 'none';
-
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    // Replace the entire body content with the new page content
-                    document.body.innerHTML = this.responseText;
+                    // Replace the entire HTML document with the new content
+                    document.open(); // Clears the current document
+                    document.write(this.responseText); // Writes the new page content
+                    document.close(); // Closes the stream, rendering the new content
                 }
             };
             xhttp.open("GET", page, true);

@@ -75,6 +75,7 @@
             // Check if the username and password are correct
             if (accounts[username] && accounts[username] === password) {
                 // Login success - load index3.html content dynamically
+                sessionStorage.setItem('isLoggedIn', 'true');
                 loadNewContent('index3.html');
             } else {
                 // Show error message if login fails

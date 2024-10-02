@@ -3,7 +3,6 @@ body {
   background: linear-gradient(to right, red 50%, yellow 50%);
   height: 100vh;
   margin: 0;
-  display: flex;
   justify-content: center; /* Horizontaal centreren */
 }
 
@@ -30,8 +29,6 @@ body {
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
-  display: flex;
-  justify-content: center; /* Horizontaal centreren */
 }
 
 /* Modal Content (image) */
@@ -107,5 +104,3 @@ body {
     width: 100%;
   }
 }
-
-

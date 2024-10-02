@@ -59,12 +59,13 @@
     </div>
 
     <script>
+        async function loadAccounts() {
+            const response = await fetch('accJC24jidmfj.json');
+            const accounts = await response.json();
+            return accounts;
+        }
         // Accounts opslaan als een object { username: "password" }
-        const accounts = {
-            "user1": "password123",
-            "Rik": "BassieJC24.route", // voorbeeld van een account
-            "admin": "adminpass"
-        };
+        const accounts = await loadAccounts();
 
         function login() {
             var username = document.getElementById('username').value;

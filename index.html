@@ -58,38 +58,44 @@
         <p id="error-message" style="color: red;"></p>
     </div>
 
-<script>
-    function login() {
-        var username = document.getElementById('username').value;
-        var password = document.getElementById('password').value;
-        var errorMessage = document.getElementById('error-message');
-
-        // Haal opgeslagen account uit localStorage
-        var storedPassword = localStorage.getItem(username);
-
-        if (storedPassword && storedPassword === password) {
-            // Login success - store login status
-            localStorage.setItem('loggedInUser', username);
-            loadNewContent('index3.html');
-        } else {
-            // Show error message if login fails
-            errorMessage.textContent = 'Incorrect username or password, please try again.';
-        }
-    }
-
-    function loadNewContent(page) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.open();
-                document.write(this.responseText);
-                document.close();
-            }
+    <script>
+        // Accounts opslaan als een object { username: "password" }
+        const accounts = {
+            "user1": "password123",
+            "Rik": "BassieJC24.route", // voorbeeld van een account
+            "admin": "adminpass"
         };
-        xhttp.open("GET", page, true);
-        xhttp.send();
-    }
-</script>
+
+        function login() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var errorMessage = document.getElementById('error-message');
+
+            // Check if the username and password are correct
+            if (accounts[username] && accounts[username] === password) {
+                // Login success - load index3.html content dynamically
+                loadNewContent('index3.html');
+            } else {
+                // Show error message if login fails
+                errorMessage.textContent = 'Incorrect username or password, please try again.';
+                loadNewContent('index2.html');
+            }
+        }
+
+        function loadNewContent(page) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    // Replace the entire HTML document with the new content
+                    document.open(); // Clears the current document
+                    document.write(this.responseText); // Writes the new page content
+                    document.close(); // Closes the stream, rendering the new content
+                }
+            };
+            xhttp.open("GET", page, true);
+            xhttp.send();
+        }
+    </script>
 
 </body>
 </html>

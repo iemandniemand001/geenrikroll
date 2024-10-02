@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('bassie.jpg'); 
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+        }
+        .register-container {
+            background-color: rgba(255, 255, 255, 0.8); 
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            width: 300px;
+        }
+        input[type='text'], input[type='password'] {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="register-container">
+        <h2>Register</h2>
+        <input type="text" id="new-username" placeholder="Enter username">
+        <input type="password" id="new-password" placeholder="Enter password">
+        <br><br>
+        <button onclick="register()">Register</button>
+        <p id="register-message" style="color: red;"></p>
+    </div>
+
+    <script>
+        function register() {
+            var newUsername = document.getElementById('new-username').value;
+            var newPassword = document.getElementById('new-password').value;
+            var registerMessage = document.getElementById('register-message');
+
+            if (newUsername === "" || newPassword === "") {
+                registerMessage.textContent = "Username and password cannot be empty.";
+                return;
+            }
+
+            // Check if account already exists
+            if (localStorage.getItem(newUsername)) {
+                registerMessage.textContent = "Username already exists.";
+                return;
+            }
+
+            // Save new account to localStorage
+            localStorage.setItem(newUsername, newPassword);
+            registerMessage.style.color = "green";
+            registerMessage.textContent = "Account created successfully!";
+
+            // Redirect to login page after 2 seconds
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>

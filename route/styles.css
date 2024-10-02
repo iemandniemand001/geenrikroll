@@ -5,7 +5,6 @@ body {
   margin: 0;
   display: flex;
   justify-content: center; /* Horizontaal centreren */
-  align-items: center;     /* Verticaal centreren */
 }
 
 #myImg {
@@ -33,7 +32,6 @@ body {
   background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
   display: flex;
   justify-content: center; /* Horizontaal centreren */
-  align-items: center;     /* Verticaal centreren */
 }
 
 /* Modal Content (image) */
@@ -109,3 +107,5 @@ body {
     width: 100%;
   }
 }
+
+

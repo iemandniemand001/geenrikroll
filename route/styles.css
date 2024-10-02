@@ -3,6 +3,9 @@ body {
   background: linear-gradient(to right, red 50%, yellow 50%);
   height: 100vh;
   margin: 0;
+  display: flex;
+  justify-content: center; /* Horizontaal centreren */
+  align-items: center;     /* Verticaal centreren */
 }
 
 #myImg {
@@ -28,6 +31,9 @@ body {
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+  display: flex;
+  justify-content: center; /* Horizontaal centreren */
+  align-items: center;     /* Verticaal centreren */
 }
 
 /* Modal Content (image) */

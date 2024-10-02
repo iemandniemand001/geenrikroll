@@ -77,8 +77,8 @@
                 loadNewContent('index3.html');
             } else {
                 // Show error message if login fails
-                loadNewContent('index2.html');
                 errorMessage.textContent = 'Incorrect username or password, please try again.';
+                loadNewContent('index2.html');
             }
         }
 
@@ -86,11 +86,8 @@
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    // Replace the entire content of the login container
+                    // Replace the content of the #content div
                     document.getElementById('content').innerHTML = this.responseText;
-
-                    // Optionally, you can hide the original login form completely
-                    document.body.style.display = "none"; // Hides the login container after loading new content
                 }
             };
             xhttp.open("GET", page, true);

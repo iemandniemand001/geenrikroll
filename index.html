@@ -82,6 +82,7 @@
             } else {
                 // Show error message if login fails
                 errorMessage.textContent = 'Incorrect username or password, please try again.';
+                sessionStorage.setItem('isLoggedIn', 'false');
                 loadNewContent('index2.html');
             }
         }

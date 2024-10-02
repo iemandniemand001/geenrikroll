@@ -40,19 +40,13 @@
             font-weight: bold;
         }
     </style>
-    <script>
-        // Check if the user is logged in
-        window.onload = function() {
-            var loggedInUser = localStorage.getItem('loggedInUser');
-            if (!loggedInUser) {
-                // If not logged in, redirect to login page
-                window.location.href = 'index.html';
-            }
-        };
+    </div>
 
-        function logout() {
-            localStorage.removeItem('loggedInUser'); // Log the user out
-            window.location.href = 'index.html'; // Redirect to login page
+    <script>
+        // Controleer of de gebruiker is ingelogd
+        if (sessionStorage.getItem('isLoggedIn') !== 'true') {
+            // Als er geen token is, stuur terug naar loginpagina
+            window.location.href = 'index.html';
         }
     </script>
 </head>
